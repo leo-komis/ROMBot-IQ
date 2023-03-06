@@ -7,5 +7,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
+  
+  <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+  <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
+  <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  <PackageReference Include="OpenAI" Version="0.2.2" />
+  <PackageReference Include="TensorFlow.NET" Version="0.8.6" />  
 </Project>
