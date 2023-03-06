@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<index.html>
+  <head>
+    <title>ROM Bot IQ</title>
+  </head>
+  <body>
+    <h1>ROM Bot IQ</h1>
+    <h2>The ROM Global AI specialist</h2>
+    <form id="question-form">
+      <label for="question-input">Enter your question:</label>
+      <input type="text" id="question-input" name="question">
+      <button type="submit">Submit</button>
+    </form>
+    <div id="answer"></div>
+    <button id="train-button">Train Model</button>
+    <script>
+      const form = document.getElementById('question-form');
+      const answer = document.getElementById('answer');
+      const trainButton = document.getElementById('train-button');
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const question = event.target.elements.question.value;
+        const response = await fetch(`/answer?question=${encodeURIComponent(question)}`);
+        const answerText = await response.text();
+        answer.innerHTML = `<p><strong>Answer:</strong> ${answerText}</p>`;
+      });
+
+      trainButton.addEventListener('click', async () => {
+        await fetch('/train', { method: 'GET' });
+        alert('Model training complete!');
+      });
+    </script>
+  </body>
+</index.html>

@@ -1,0 +1,51 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  dotnetSdkVersion: '3.1'
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Use .NET Core SDK'
+  inputs:
+    version: "7.0"
+    packageType: sdk
+
+- task: DotNetCoreCLI@2
+  displayName: 'Restore NuGet packages'
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build the project'
+  inputs:
+    command: 'build'
+    arguments: '--configuration $(buildConfiguration)'
+    projects: '**/*.csproj'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Publish the project'
+  inputs:
+    command: 'publish'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    projects: '**/*.csproj'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish build artifacts'
+  inputs:
+    artifactName: 'drop'
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+
+- task: AzureRmWebAppDeployment@4
+  displayName: 'Deploy to Azure App Service'
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'df7b7511-9790-48e4-a14b-53e54e91517c'
+    appType: 'webApp'
+    WebAppName: 'ROMBot-IQ'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
