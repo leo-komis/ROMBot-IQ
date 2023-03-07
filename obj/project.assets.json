@@ -13,20 +13,18 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/leo/Library/CloudStorage/OneDrive-KOMISsrl/ROM Global bot training/ROMBot IQ/ROMBot-IQ/ROMBot-IQ.csproj",
+      "projectUniqueName": "ROMBot-IQ.csproj",
       "projectName": "ROMBot-IQ",
-      "projectPath": "/Users/leo/Library/CloudStorage/OneDrive-KOMISsrl/ROM Global bot training/ROMBot IQ/ROMBot-IQ/ROMBot-IQ.csproj",
-      "packagesPath": "/Users/leo/.nuget/packages/",
-      "outputPath": "/Users/leo/Library/CloudStorage/OneDrive-KOMISsrl/ROM Global bot training/ROMBot IQ/ROMBot-IQ/obj/",
+      "projectPath": "ROMBot-IQ.
+      "outputPath": "ROMBot-IQ/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/leo/.nuget/NuGet/NuGet.Config"
+        "web.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
-      "sources": {
-        "/usr/local/share/dotnet/library-packs": {},
+      "sources":
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -59,8 +57,7 @@
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
-        },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.200/RuntimeIdentifierGraph.json"
+        }
       }
     }
   }
